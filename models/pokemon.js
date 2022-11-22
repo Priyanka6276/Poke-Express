@@ -8,6 +8,17 @@ const pokemon = [
     {name: "wartortle", img: "http://img.pokemondb.net/artwork/wartortle"}
  ]
 
+ const mongoose = require("mongoose")
+
+ const pokemonSchema = new mongoose.Schema({
+    name: {type:String, required: true},
+    img: {type:String, required:true},
+ })
+
+ const Pokemon = mongoose.model("Pokemon", pokemonSchema)
+
+
  module.exports = pokemon
+ module.exports = Pokemon 
 
  //Charmander is my favorite starter :)
