@@ -9,3 +9,5 @@ const pokemon = [
  ]
 
  module.exports = pokemon
+
+ //Charmander is my favorite starter :)
