@@ -7,7 +7,7 @@ const app = express()
 const PORT = 3000
 
 const pokemon = require("./models/pokemon")
-const Pokemon = require("./models/pokemon")
+const Pokemon = require("./models/pokemon-schema")
 
 const reactViews = require("express-react-views")
 
@@ -56,6 +56,10 @@ app.get("/pokemon/new", (req,res) => {
     .render("New")
 })
 
+// app.get("/pokemon", (req,res) => {
+//     res.render("Index", {pokemon:pokemon})
+// })
+
 app.post("/pokemon", (req,res) => {
     Pokemon.create(req.body, (error, createdPokemon) => {
         if(!error) {
@@ -65,7 +69,7 @@ app.post("/pokemon", (req,res) => {
         } else {
             res
             .status(400)
-            .send(errors)
+            .send(error)
         }
     })
     // pokemon.push(req.body)
@@ -74,7 +78,7 @@ app.post("/pokemon", (req,res) => {
 })
 
 app.get("/pokemon/:id", (req,res) => {
-    Fruit.findById(req.params.id, (error, foundPokemon) => {
+    Pokemon.findById(req.params.id, (error, foundPokemon) => {
         if(!error) {
             res
             .status(200)
